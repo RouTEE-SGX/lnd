@@ -1,3 +1,58 @@
+## lnd Analysis
+
+## Estimating the performance of `lnd`
+
+### Alice (sender)
+
+* Network only
+```
+$ python3 server.py
+```
+waits client messages.
+
+* Payments
+```
+(in docker)$ sh logging.sh
+```
+
+### Bob (receiver)
+
+* Network only
+```
+$ python3 server.py
+```
+`server.py` must be running first on server (Alice) side.
+
+* Creating invoices
+```
+(in docker)$ sh logging.sh
+```
+
+## Create & Send Payments
+
+### Alice (sender)
+
+* Send invoices
+```
+$ python3 daemon_server.py
+```
+
+### Bob (receiver)
+
+* Create invoices
+```
+$ python3 invoice.py
+```
+waits client messages.
+
+* Send invoices
+```
+$ python3 daemon_client.py
+```
+`daemon_server.py` must be running first on server (Alice) side.
+
+---
+
 ## Lightning Network Daemon
 
 [![Build Status](https://img.shields.io/travis/lightningnetwork/lnd.svg)](https://travis-ci.org/lightningnetwork/lnd)
